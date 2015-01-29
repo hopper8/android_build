@@ -13,29 +13,26 @@
 # limitations under the License.
 #
 
-LOCAL_DISABLE_KRAIT := \
+LOCAL_DISABLE_PIPE := \
 	libc_dns \
 	libc_tzcode \
-	bluetooth.default \
-	libwebviewchromium \
-	libwebviewchromium_loader \
-	libwebviewchromium_plat_support
+	bluetooth.default
 
-ifneq (1,$(words $(filter $(LOCAL_DISABLE_KRAIT), $(LOCAL_MODULE))))
+ifneq (1,$(words $(filter $(LOCAL_DISABLE_PIPE), $(LOCAL_MODULE))))
 ifdef LOCAL_CONLYFLAGS
-LOCAL_CONLYFLAGS += -mcpu=cortex-a15 \
-	-mtune=cortex-a15
+LOCAL_CONLYFLAGS += \
+	-pipe
 else
-LOCAL_CONLYFLAGS := -mcpu=cortex-a15 \
-	-mtune=cortex-a15
+LOCAL_CONLYFLAGS := \
+	-pipe
 endif
 
 ifdef LOCAL_CPPFLAGS
-LOCAL_CPPFLAGS += -mcpu=cortex-a15 \
-	-mtune=cortex-a15
+LOCAL_CPPFLAGS += \
+	-pipe
 else
-LOCAL_CPPFLAGS := -mcpu=cortex-a15 \
-	-mtune=cortex-a15
+LOCAL_CPPFLAGS := \
+	-pipe
 endif
 endif
 #####
